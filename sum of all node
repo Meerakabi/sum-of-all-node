@@ -1,0 +1,24 @@
+from collections import deque
+
+def sum_nodes_bfs(root):
+    if root is None:
+        return 0
+    
+    total_sum = 0
+    queue = deque([root])
+    
+    while queue:
+        node = queue.popleft()
+        total_sum += node.value
+        
+        # Add children to the queue
+        if node.left:
+            queue.append(node.left)
+        if node.right:
+            queue.append(node.right)
+    
+    return total_sum
+
+# Example usage:
+total_sum = sum_nodes_bfs(root)
+print("Sum of all node values:", total_sum)
